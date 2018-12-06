@@ -1,9 +1,16 @@
 <form action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
     <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
-    <input type="text" name="" value="<%-  %>" placeholder="">
-    <input type="text" name="" value="<%-  %>" placeholder="">
-    <input type="text" name="" value="<%-  %>" placeholder="">
-    <input type="text" name="" value="<%=  %>" placeholder="">
-    <textarea name="" value="<%-  %>" placeholder="" cols="30" rows="10"><%-  %></textarea>
+    <input type="text" name="company" value="<%- company.companyName %>" placeholder="Company Name">
+    <input type="text" name="founded" value="<%- company.founded %>" placeholder="Founding Year">
+    <input type="text" name="size" value="<%- company.size %>" placeholder="Company Size">
+    <input type="text" name="leaders" value="<%- company.leaders %>" placeholder="Company Leaders">
+    <input type="text" name="product" value="<%- company.product %>" placeholder="Company Product">
+    <input type="text" name="clients" value="<%- company.clients %>" placeholder="Company Clients">
+    <input type="text" name="mission" value="<%= company.mission %>" placeholder="Company Mission">
+    <input type="text" name="contacts" value="<%- company.contacts %>" placeholder="Possible Company Contacts">
+    <input type="text" name="location" value="<%- company.location %>" placeholder="Company Location">
+    <input type="text" name="domain" value="<%- company.domain %>" placeholder="Company Website">
+    <input type="text" name="logo" value="<%- company.logo %>" placeholder="Company Logo">
+    <textarea name="notes" value="<%- company.notes %>" placeholder="Enter personal notes on company here." cols="30" rows="10"><%- company.notes %></textarea>
     <button type="submit"><%- 'update' === formAction ? "Update This Company" : "Add This Company" %></button>
 </form>
