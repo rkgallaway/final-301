@@ -9,14 +9,9 @@
     <main>
       <section class="">
         <ul class="" id="">
-          <% results.forEach( => { %>
+          <% results.forEach( company => { %>
           <div class="">
-            <li data-id="<%=  %>"></li>
-            <li><img src=<%=  %></li>
-            <li><h3>: <%=  %></h3></li>
-            <li><p>: <%=  %></p></li>
-            <li><a href="<%=  %>"></a></li>
-            <li><a href="<%=  %>"></a></li>
+            <%- include('partials/form', {formAction: 'update', company: company}) %>
           </div>
           <% }) %>
         </ul>
