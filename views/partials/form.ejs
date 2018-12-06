@@ -1,0 +1,9 @@
+<form action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
+    <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
+    <input type="text" name="" value="<%-  %>" placeholder="">
+    <input type="text" name="" value="<%-  %>" placeholder="">
+    <input type="text" name="" value="<%-  %>" placeholder="">
+    <input type="text" name="" value="<%=  %>" placeholder="">
+    <textarea name="" value="<%-  %>" placeholder="" cols="30" rows="10"><%-  %></textarea>
+    <button type="submit"><%- 'update' === formAction ? "Update This Company" : "Add This Company" %></button>
+</form>

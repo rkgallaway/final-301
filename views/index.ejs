@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+  </head>
+
+  <body>
+    <header><%- include('partials/header.ejs') %></header>
+    <main>
+      <section class="">
+        <ul class="" id="">
+          <% results.forEach( => { %>
+          <div class="">
+            <li data-id="<%=  %>"></li>
+            <li><img src=<%=  %></li>
+            <li><h3>: <%=  %></h3></li>
+            <li><p>: <%=  %></p></li>
+            <li><a href="<%=  %>"></a></li>
+            <li><a href="<%=  %>"></a></li>
+          </div>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
+
+    <footer><%- include('partials/footer') %></footer>
+  </body>
+</html>
