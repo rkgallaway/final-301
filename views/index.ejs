@@ -10,9 +10,9 @@
       <section class="">
         <ul class="" id="">
           <% results.forEach( company => { %>
-          <div class="">
+          <section class="company">
             <%- include('partials/form', {formAction: 'update', company: company}) %>
-          </div>
+          </section>
           <% }) %>
         </ul>
       </section>
