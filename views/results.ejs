@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <header><%- include('partials/header') %></header>
+    <main>
+      <section class="">
+        <ul class="">
+          <div class="">
+            <%- include('partials/form', {formAction: 'save', company: searchResults}) %>
+          </div>
+        </ul>
+      </section>
+    </main>
+  </body>
+  <footer><%- include('partials/footer') %></footer>
+</html>

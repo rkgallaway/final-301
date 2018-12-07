@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+  </head>
+
+  <body>
+    <header><%- include('partials/header.ejs') %></header>
+    <main>
+        <form action="/results" method ="post">
+          <fieldset>
+              <h1>Search</h1>
+              <label>
+                  <input class="search" type="text" name="searchTerm"></input>    
+              </label>
+              <button type="submit">Go!</button>
+          </fieldset>
+      </form>
+      <section class="">
+        <ul class="" id="">
+          <% results.forEach( company => { %>
+          <section class="company">
+            <%- include('partials/form', {formAction: 'update', company: company}) %>
+          </section>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
+
+    <footer><%- include('partials/footer') %></footer>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+* {
+  /* outline: 1px solid rgb(143, 137, 233) !important; */
+}
+
+.header {
+  background-color: rgb(206, 206, 206);
+  border-bottom: 2px solid white;
+}
+
+html {
+  width: 360px;
+  background-color: white;
+}
+
+main {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(44, 44, 44);
+  font-family: sans-serif;
+  position: relative;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(80, 79, 79);
+}
+
+header section p {
+  display: inline;
+}
+
+header h1 {
+  display: inline;
+}
+
+h1 {
+  font-size: 1.25em;
+}
+
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+}
+
+.header .fas {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* nav items */
+header li {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(226, 226, 226);
+  width: 100%;
+}
+
+header li:not(:first-child){
+  border-top: 1px solid white;
+  /* background-color: red; */
+}
+
+.nav ul {
+  width: 100%;
+  /* border: red; */
+  border-left: 2px solid rgb(85, 85, 85);
+  border-right: 2px solid rgb(85, 85, 85);
+  border-bottom: 2px solid rgb(85, 85, 85);
+
+}
+
+ul, form {
+  width: 100%;
+}
+
+
+header li .fas, header li .fa{
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.nav {
+  position: absolute;
+  width: 40%;
+  display: none;
+}
+
+body section {
+  background-color: rgb(219, 219, 219);
+  display: flex;
+  justify-content: left;
+  flex-wrap: nowrap;
+}
+
+input {
+  border: none;
+  background-color: inherit;
+  display: block;
+}
+
+.company {
+  padding: 8px;
+  border: 2px solid rgb(241, 241, 241);
+  margin: 5px;
+  /* border-radius: 10px; */
+}
+
+.formHeader {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* margin-bottom: 5px; */
+}
+
+.formHeader input{
+  align-self: center;
+  font-size: 130%;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.formHeader div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+
+.formHeader img {
+  width: 100%;
+}
+
+input {
+  margin: 5px;
+}
+
+.location {
+  width: 100%;
+ text-align: center;
+ margin-bottom: 5px;
+}
+
+.company .companyProduct {
+  /* background-color: red; */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.companyProduct textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+.numbers {
+  /* background-color: rgb(177, 145, 145); */
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.numbers label{
+  width: 50%;
+  text-align: center;
+}
+
+.numbers input {
+  /* width: 40%; */
+  text-align: center;
+}
+
+.company textarea:not(.userNotes) {
+  /* background-color: blue; */
+  background-color: inherit;
+  border: none;
+  resize: none;
+}
+
+
+.mission {
+  background-color: rgb(253, 212, 212);
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.mission label{
+  width: 100%;
+
+}
+
+.mission textarea {
+  width: 100%;
+}
+
+.leaders {
+  /* background-color: rgb(177, 145, 145); */
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.leaders label{
+  width: 50%;
+  text-align: center;
+}
+
+.leaders input {
+  /* width: 40%; */
+  text-align: center;
+}
+
