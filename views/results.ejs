@@ -8,11 +8,9 @@
     <main>
       <section class="">
         <ul class="">
-          <% searchResults.forEach( => { %>
           <div class="">
-            <%- include('partials/form', {formAction: 'save', : }) %>
+            <%- include('partials/form', {formAction: 'save', company: searchResults}) %>
           </div>
-          <% }) %>
         </ul>
       </section>
     </main>
