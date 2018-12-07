@@ -1,8 +1,17 @@
 {
   "name": "final-301",
   "version": "1.0.0",
-  "description": "",
+  "description": "**Author**\r Ryan Gallaway, Jacob Anderson, Tyler Hood, Fletcher LaRue\r **Version**\r 1.0.0 \r #Dependencies\r express, dotenv, pg, cors, superagent, node-fetch, ejs\r ## Overview\r <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->",
   "main": "server.js",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "pg": "^7.7.1",
+    "superagent": "^4.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -16,14 +25,5 @@
   "bugs": {
     "url": "https://github.com/rkgallaway/final-301/issues"
   },
-  "homepage": "https://github.com/rkgallaway/final-301#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^6.2.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "node-fetch": "^2.3.0",
-    "pg": "^7.7.1",
-    "superagent": "^4.0.0"
-  }
+  "homepage": "https://github.com/rkgallaway/final-301#readme"
 }
