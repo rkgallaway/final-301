@@ -1,7 +1,8 @@
 <form action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
+    <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
+
     <div class="formHeader">
         <button type="button">-</button>
-        <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
         <input type="text" name="companyName" value="<%- company.companyName %>" placeholder="Company Name">
         
         <div>
