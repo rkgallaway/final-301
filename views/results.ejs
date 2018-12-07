@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <header><%- include('partials/header') %></header>
+    <main>
+      <section class="">
+        <ul class="">
+          <% searchResults.forEach( => { %>
+          <div class="">
+            <%- include('partials/form', {formAction: 'save', : }) %>
+          </div>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
+  </body>
+  <footer><%- include('partials/footer') %></footer>
+</html>
