@@ -8,8 +8,9 @@
 }
 
 html {
-  width: 360px;
+  width: 100%;
   background-color: white;
+  box-sizing: border-box;
 }
 
 main {
@@ -20,6 +21,7 @@ main {
 body {
   color: rgb(44, 44, 44);
   font-family: sans-serif;
+  font-size: 2em;
   position: relative;
   padding: 5px;
   width: 100%;
@@ -27,28 +29,65 @@ body {
   background-color: rgb(80, 79, 79);
 }
 
+.searchForm {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+
+.searchForm div {
+  display: flex;
+  height: 200px;
+  width: 50%;
+  margin-left: 25px;
+  margin-right: 25px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.searchForm .search {
+  /* background-color: red; */
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  font-size: 1.25em;
+}
+
+.searchForm button {
+  font-size: 1em;
+}
+
+
+
 header section p {
   display: inline;
 }
 
 header h1 {
   display: inline;
+  font-weight: bold;
+
 }
 
 h1 {
-  font-size: 1.25em;
+  font-size: 1.60em;
 }
 
 .header {
-  height: 50px;
+  height: 100px;
   display: flex;
   align-items: center;
 
 }
 
 .header .fas {
-  margin-left: 10px;
-  margin-right: 10px;
+  /* background-color: red; */
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 /* nav items */
@@ -76,6 +115,7 @@ header li:not(:first-child){
 
 ul, form {
   width: 100%;
+  background-color: inherit;
 }
 
 
@@ -97,16 +137,19 @@ body section {
   flex-wrap: nowrap;
 }
 
-input {
+.company input {
   border: none;
   background-color: inherit;
   display: block;
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
 .company {
   padding: 8px;
   border: 2px solid rgb(241, 241, 241);
   margin: 5px;
+  margin-bottom: 30vw;
   /* border-radius: 10px; */
 }
 
@@ -115,12 +158,12 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  /* margin-bottom: 5px; */
+  margin-bottom: 10vw;
 }
 
 .formHeader input{
   align-self: center;
-  font-size: 130%;
+  font-size: 200%;
   font-weight: bold;
   text-align: center;
 
@@ -130,8 +173,15 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 20%;
+}
+
+.formHeader input {
+  width: 70%;
+}
+
+.formHeader button {
+  width: 10%;
 }
 
 .formHeader img {
@@ -145,13 +195,13 @@ input {
 .location {
   width: 100%;
  text-align: center;
- margin-bottom: 5px;
+ margin-bottom: 10vw;
 }
 
 .company .companyProduct {
   /* background-color: red; */
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 10vw;
 }
 
 .companyProduct textarea {
@@ -166,7 +216,7 @@ input {
   flex-wrap: wrap;
   /* justify-content: space-evenly; */
   justify-content: space-evenly;
-  margin-bottom: 10px;
+  margin-bottom: 10vw;
 }
 
 .numbers label{
@@ -184,14 +234,16 @@ input {
   background-color: inherit;
   border: none;
   resize: none;
+  font-size: 1em;
 }
 
 
 .mission {
-  background-color: rgb(253, 212, 212);
+  /* background-color: rgb(253, 212, 212); */
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 10vw;
+  text-align: center;
 }
 
 .mission label{
@@ -209,7 +261,7 @@ input {
   flex-wrap: wrap;
   /* justify-content: space-evenly; */
   justify-content: space-evenly;
-  margin-bottom: 10px;
+  margin-bottom: 10vw;
 }
 
 .leaders label{
