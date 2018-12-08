@@ -1,4 +1,5 @@
 <form action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
+    
     <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
 
     <div class="formHeader">
@@ -14,7 +15,7 @@
     
     <div class="companyProduct">
         <label>Product:</label>
-        <textarea type="text" name="product" value="<%- company.product %>" placeholder="Company Product" rows="2"></textarea>
+        <textarea type="text" name="product" value="<%- company.product %>" placeholder="Company Product" rows="2"><%- company.product %></textarea>
     </div>
     
     <div class="numbers">
@@ -26,7 +27,7 @@
 
     <div class="mission">
         <label>Mission:</label>
-        <textarea type="text" name="mission" value="<%= company.mission %>" placeholder="Company Mission" rows="6"></textarea>
+        <textarea type="text" name="mission" value="<%= company.mission %>" placeholder="Company Mission" rows="6"><%- company.mission %></textarea>
     </div>
     
     <div class="leaders">    
@@ -37,16 +38,16 @@
         <input type="text" name="clients" value="<%- company.clients %>" placeholder="Company Clients">
     </div>
 
-    <label>Website:</label>
-    <input type="text" name="domain" value="<%- company.domain %>" placeholder="Company Website">
-    
-    <label>Contacts:</label>
-    <input type="text" name="contacts" value="<%- company.contacts %>" placeholder="Possible Company Contacts">
-    
-    <button type="button">-</button>    
-    
-    <label>Notes:</label>
+    <div class="footer">
+        <div>
+            <a href="https://<%- company.twitter %>" target="_blank"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://<%- company.facebook %>" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://<%= company.domain %>" target="_blank"><i class="fas fa-external-link-square-alt"></i></a>
+        </div>
+        <button type="button">-</button> 
+    </div>       
+    <div class="dropDown">
     <textarea class="userNotes" name="notes" value="<%- company.notes %>" placeholder="Enter personal notes on company here." cols="30" rows="10"><%- company.notes %></textarea>
-    <label>Submit:</label>
     <button type="submit"><%- 'update' === formAction ? "Update This Company" : "Add This Company" %></button>
+    </div>
 </form>
