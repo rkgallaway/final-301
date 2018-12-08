@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+  </head>
+
+  <body>
+    <header><%- include('partials/header.ejs') %></header>
+    <main>
+      <section class="company">
+        <% for (let i = 0; i < teamMembers.length; i ++){ %>
+          <%- include('partials/person', {person: teamMembers[i]}) %>
+        <% } %>
+      </section>
+    </main>
+
+    <footer><%- include('partials/footer') %></footer>
+  </body>
+</html>
