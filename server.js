@@ -41,9 +41,10 @@ app.use(methodOverride((request, response) => {
 //route  for home view
 app.get('/', getHome);
 app.post('/results', getCompanyDomain);
+app.get('/results', createNew);
 app.put('/update/:company_id', editCompanyDetails);
 app.post('/add', saveNewCompanyDetails);
-app.delete('/delete/:company_id', deleteCompany);
+app.get('/delete/:company_id', deleteCompany);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
@@ -152,13 +153,19 @@ function saveNewCompanyDetails(request, response) {
 }
 
 function deleteCompany(request, response) {
-  let SQL = `DELETE FROM savedcompanies WHERE id='${request.params.company_id}';`;
-  return client.query(SQL)
-    .then(() => {
-      return response.redirect('/')
-    })
+  let SQL = `DELETE FROM savedcompanies WHERE id=$1;`;
+  let values = [request.params.company_id];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/'))
     .catch(error => handleError(error, response));
 }
+
+//loads empty result page for company add
+function createNew(request, response){
+  response.render('results', {searchResults: request});
+}
+
 
 //++++++++++++++ HELPERS +++++++++++++++
 
@@ -243,7 +250,7 @@ const teamMembers = [
   {
     name: 'Fletcher LaRue',
     title: 'Software Developer',
-    profile_pic_path: 'https://via.placeholder.com/500',
+    profile_pic_path: 'images/Fletcher_LaRue_About.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
@@ -252,7 +259,7 @@ const teamMembers = [
   {
     name: 'Tyler R Hood',
     title: 'Software Developer',
-    profile_pic_path: 'https://via.placeholder.com/500',
+    profile_pic_path: 'images/tyler.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
     github_url: 'https://github.com/Thood50',
@@ -261,7 +268,7 @@ const teamMembers = [
   {
     name: 'Ryan Gallaway',
     title: 'Software Developer',
-    profile_pic_path: 'https://via.placeholder.com/500',
+    profile_pic_path: 'images/ryan.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/ryangallaway/',
     github_url: 'https://github.com/rkgallaway',
@@ -270,11 +277,11 @@ const teamMembers = [
   {
     name: 'Jacob Anderson',
     title: 'Software Developer',
-    profile_pic_path: 'https://via.placeholder.com/500',
+    profile_pic_path: 'images/Jake_Anderson_About.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    bio: 'Jake grew up on legos, little did he know they wouldn\'t just be the building blocks of the castle he was making but also the building blocks for problem solving skills and lego piece bartering skills. Will graduate Code Fellows in February of 2019 with a degree in software design. If there\'s one thing that puts the motion in this man\'s ocean commotion it\'s playing card games with friends.',
   }
 ];
 
