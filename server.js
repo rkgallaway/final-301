@@ -1,7 +1,4 @@
 'use strict';
-console.log('~~~~~~~~~~~~');
-
-//+++++++++++++++ DEPENDENCIES +++++++++++++++++++
 
 const express = require('express');
 const pg = require('pg');
@@ -13,7 +10,7 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 //const superagent = require('superagent');
-const util = require('util');
+//const util = require('util');
 // const cors =  require('cors');
 
 //databse setup
@@ -38,6 +35,7 @@ app.use(methodOverride((request, response) => {
   }
 }))
 
+
 //+++++++++++++++ ROUTES +++++++++++++++++++
 
 //route  for home view
@@ -45,9 +43,10 @@ app.get('/', getHome);
 app.post('/results', getCompanyDomain);
 app.put('/update/:company_id', editCompanyDetails);
 app.post('/add', saveNewCompanyDetails);
-app.delete('/delete', deleteCompany);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+//handler for POST request / searches
 
 //+++++++++++++++ MODELS ++++++++++++++++
 
@@ -57,15 +56,17 @@ function Company(fullContact, clearBit) {
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
-  this.product;
-  this.clients;
-  this.mission;
-  this.contacts;
+  this.product = fullContact.bio;
+  this.clients; //can find on wiki, doesn't appear to be consistent on fullcontact
+  this.mission; //not finding on fullcontact.  can always google. is scraping an option?
+  this.contacts; //multiple contact points @twitter linked in and others. not consistent on multiple businesses
   this.location = fullContact.location;
   this.domain = clearBit.domain;
   this.logo = clearBit.logo;
-  this.notes;
+  this.notes; //needs populated w/ sql notes
+
 }
+
 
 //++++++++++++++ SQL +++++++++++++++
 
@@ -94,6 +95,7 @@ function saveCompany(company) {
 }
 
 function editCompanyDetails(request, response) {
+
   let SQL = `UPDATE savedcompanies SET companyName=$1, founded=$2, size=$3, leaders=$4, product=$5, clients=$6, mission=$7, contacts=$8, location=$9, domain=$10, logo=$11, notes=$12 WHERE id=${request.params.company_id};`;
 
   let values = [
@@ -116,6 +118,7 @@ function editCompanyDetails(request, response) {
       return response.redirect('/');
     })
     .catch(error => handleError(error, response));
+
 }
 
 function saveNewCompanyDetails(request, response) {
@@ -143,15 +146,6 @@ function saveNewCompanyDetails(request, response) {
     .catch(error => handleError(error, response));
 }
 
-function deleteCompany(request, response) {
-  let SQL = `DELETE FROM savedcompanies WHERE companyname='${request.body.companyName}';`;
-  return client.query(SQL)
-    .then(() => {
-      return response.redirect('/')
-    })
-    .catch(error => handleError(error, response));
-}
-
 //++++++++++++++ HELPERS +++++++++++++++
 
 //on page load
@@ -171,7 +165,7 @@ function getHome(request, response) {
 
 //error handler
 function handleError(err, res) {
-  console.error(err);
+  //console.error(err);
   res.render('error.ejs', { error: 'Error recieved' });
 }
 
@@ -200,6 +194,7 @@ function getCompanyDomain(request, response) {
 }
 
 function getCompanyInfo(request, response, json) {
+  // we passed in trying to find the dmoain we will get
   fetch('https://api.fullcontact.com/v3/company.enrich', {
     method: 'POST',
     headers: {
@@ -213,8 +208,11 @@ function getCompanyInfo(request, response, json) {
       return res.json();
     })
     .then(apiResponse => {
+      // console.log(apiResponse.details.location);
       const newCompany = new Company(apiResponse, json);
       saveCompany(newCompany);
+      console.log(apiResponse.details);
+
       return newCompany;
     })
     .then(results => {
@@ -222,37 +220,79 @@ function getCompanyInfo(request, response, json) {
     })
 
     .catch(error => handleError(error, response));
+  // console.log(apiResponse);
+
 }
 
-// function getCompany(request, response){
 
-// }
+const teamMembers = [
+  {
+    name: 'Fletcher LaRue',
+    title: 'Software Developer',
+    profile_pic_path: 'https://via.placeholder.com/500',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
+    bio: 'Currently enrolled in Code Fellows Seattle campus on the Full Stack JavaScript course. This will formalize my long passion for coding, problem solving, and building cool stuff! My background is in Mechanical Engineering, but I\'ve seen the light and switched to web development. Not out of the blue though over the years I\'ve done side projects  courses and my family of web developers.',
+  },
+  {
+    name: 'Tyler R Hood',
+    title: 'Software Developer',
+    profile_pic_path: 'https://via.placeholder.com/500',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
+    github_url: 'https://github.com/Thood50',
+    bio: 'Im alive',
+  },
+  {
+    name: 'Ryan Gallaway',
+    title: 'Software Developer',
+    profile_pic_path: 'https://via.placeholder.com/500',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/ryangallaway/',
+    github_url: 'https://github.com/rkgallaway',
+    bio: 'When not developing software or gardening, I enjoy the outdoors, travel, and spending time with my rescue dog Wiener; Wiener the Dog.',
+  },
+  {
+    name: 'Jacob Anderson',
+    title: 'Software Developer',
+    profile_pic_path: 'https://via.placeholder.com/500',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  }
+];
 
-// //reference from book app
-// function createSearch(request, response) {
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-//   superagent.get(url)
-//     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
-//     .then(results => response.render('pages/searches/show', {searchResults: results}))
-//     .catch(error => handleError(error, response))
-// }
-// // reference above
+app.get('/about', handleAbout);
+// app.get('/', getHome)
 
-// //on page load
-// function getHome(request, response){
-//   let SQL = 'SELECT * from savedCompanies;';
-//   return client.query(SQL)
-//     .then( (results) => {
-//       response.render('/', {showSavedCompanies: results.rows});
-//     })
-//     .catch( (error) => handleError(error) );
-// }
+function handleAbout(request, response) {
 
-// Company.prototype = {
-//   save: function() {
-//     const SQL = `INSERT INTO ${this.tableName} (companyName, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
-//     const values = [this.companyName, this.founded, this.size, this.leaders, this.product, this.clients, this.mission, this.contacts, this.location, this.domain, this.logo];
+  const shuffledPeople = [];
 
-//     client.query(SQL,values);
-//   }
-// }
+  while (shuffledPeople.length < 4) {
+    // pick a number
+    let num = Math.floor(Math.random()*4);
+
+    let included = false;
+    // if it exists in the object
+
+    for (let i = 0; i < shuffledPeople.length; i ++){
+      if (shuffledPeople[i].name === teamMembers[num].name){
+        included = true;
+      }
+    }
+
+    // dont add them
+    if (!included) {
+      shuffledPeople.push(teamMembers[num]);
+    }
+
+  }
+  response.render('about', {teamMembers: shuffledPeople});
+}
+
+
+
+
