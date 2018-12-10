@@ -1,6 +1,23 @@
+* {
+  /* outline: 1px solid rgb(143, 137, 233) !important; */
+}
+
+:root {
+  --bkg-color: rgb(153, 153, 153);
+  --main-text-color: rgb(44, 44, 44);
+  --nav-border: rgb(85, 85, 85);
+  --nav-background: rgb(226, 226, 226);
+  --section-bkg: rgb(235, 235, 235);
+  --dropbox-color: rgb(235, 182, 176);
+  --about-border-color: rgb(235, 182, 176);
+  --footer-bkg: rgb(44, 44, 44);
+  --dropdown-bkg: rgb(80, 79, 79);
+  --header-bkg: rgb(206, 206, 206);
+}
+
 .header {
-  background-color: rgb(206, 206, 206);
-  border-bottom: 2px solid white;
+  background-color: var(--header-bkg);
+  /* border-bottom: 2px solid white; */
 }
 
 html {
@@ -12,17 +29,16 @@ html {
 main {
   height: 100%;
   box-sizing: border-box;
-  /* padding: 5px; */
 }
 
 body {
-  color: rgb(44, 44, 44);
+  color: var(--main-text-color);
   font-family: sans-serif;
   font-size: 2em;
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(153, 153, 153);
+  background-color: var(--bkg-color);
 }
 
 .searchForm {
@@ -46,7 +62,6 @@ body {
 }
 
 .searchForm .search {
-  /* background-color: red; */
   width: 100%;
   text-align: center;
   height: 100px;
@@ -88,11 +103,16 @@ h1 {
 
 /* nav items */
 header li {
-  height: 50px;
+  height: 10vw;
   display: flex;
   align-items: center;
-  background-color: rgb(226, 226, 226);
+  background-color: var(--nav-background);
   width: 100%;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
 }
 
 header li:not(:first-child){
@@ -103,9 +123,9 @@ header li:not(:first-child){
 .nav ul {
   width: 100%;
   /* border: red; */
-  border-left: 2px solid rgb(85, 85, 85);
-  border-right: 2px solid rgb(85, 85, 85);
-  border-bottom: 2px solid rgb(85, 85, 85);
+  border-left: 2px solid var(--nav-border);
+  border-right: 2px solid var(--nav-border);
+  border-bottom: 2px solid var(--nav-border);
 
 }
 
@@ -128,31 +148,33 @@ header li .fas, header li .fa{
 }
 
 section.company, section.people {
-  background-color: rgb(235, 235, 235);
+  background-color: var(--section-bkg);
 }
 
 .people {
   display: flex;
   flex-wrap: wrap; 
-  text-align: justify;
+  /* text-align: justify; */
   padding: 10px;
-  /* border-bottom: 2px dashed rgb(44, 44, 44); */
-  box-shadow: 4px 4px rgb(235, 182, 176);
+  box-shadow: 4px 4px var(--dropbox-color);
   margin: 10px;
   border-radius: 2px;
 }
 
 section.people img {
-  width: 50%;
-  height: 50%;
-  margin: 0% 25% 0% 25%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 300px;
+  max-height: 300px;
+  margin: 3vw 25% 0% 25%;
   border-radius: 50%;
   margin-bottom: 5px;
-  border: 5px dashed rgb(235, 182, 176);
+  border: 5px dashed var(--about-border-color);
 }
 
 .people h2 {
-  font-size: 2em;
+  /* font-size: 2em; */
+  font-size: 50px;
   margin-bottom: 8px;
 }
 
@@ -188,7 +210,7 @@ body section.company {
   /* border: 2px solid rgb(241, 241, 241); */
   margin-bottom: 30vw;
   /* border-radius: 10px; */
-  outline: 1px solid rgb(44, 44, 44);
+  outline: 1px solid var(--main-text-color);
 }
 
 .formHeader {
@@ -290,10 +312,8 @@ body section.company {
 }
 
 .leaders {
-  /* background-color: rgb(177, 145, 145); */
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-evenly; */
   justify-content: space-evenly;
   margin-bottom: 10vw;
 }
@@ -304,13 +324,11 @@ body section.company {
 }
 
 .leaders input {
-  /* width: 40%; */
   text-align: center;
 }
 
 .footer {
-  background-color: rgb(44, 44, 44);
-  /* outline: 1px solid rgb(143, 137, 233) !important;  */
+  background-color: var(--footer-bkg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -338,7 +356,7 @@ body section.company {
 }
 
 .dropDown {
-  background-color: rgb(80, 79, 79);
+  background-color: var(--dropdown-bkg);
   margin: 0px;
   display: flex;
   flex-wrap: wrap;
@@ -352,7 +370,6 @@ body section.company {
 .dropDown .userNotes {
   margin-left: 10vw;
   margin-right: 10vw;
-  /* outline: 5px solid rgb(143, 137, 233) !important; */
   width: 80vw;
   box-sizing: border-box;
   border-bottom-right-radius: 15%;
@@ -389,3 +406,13 @@ body section.company {
 .dropDown a {
   margin-left: 40vw;
 }
+
+.theNorris {
+  /* outline: 2px solid red; */
+  /* margin: 5vw; */
+  /* height: 100%; */
+  width: 100%;
+  padding: 4vw;
+  box-sizing: border-box;
+}
+
