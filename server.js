@@ -158,7 +158,7 @@ const teamMembers = [
   {
     name: 'Fletcher LaRue',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
@@ -167,29 +167,29 @@ const teamMembers = [
   {
     name: 'Tyler R Hood',
     title: 'Software Developer',
-    profile_pic_path: '/images/Tyler_Hood_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
     github_url: 'https://github.com/Thood50',
     bio: 'Im alive',
   },
   {
-    name: 'C',
+    name: 'Ryan Gallaway',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
-    github_url: 'https://github.com/asdFletcher',
-    bio: '',
+    github_url: 'https://github.com/rkgallaway',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    name: 'D',
+    name: 'Jacob Anderson',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
-    bio: '',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   }
 ];
 
