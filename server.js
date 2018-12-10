@@ -53,18 +53,23 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 function Company(fullContact, clearBit) {
   //this.tableName = 'lastsearched';
+  let nameWithUnderscores = fullContact.name.replace(/([ ])+/g, '_'); //replace all whitespaces with underscores
+  let wikiUrl = `https://en.wikipedia.org/wiki/${nameWithUnderscores}`;
+
   this.companyname = fullContact.name;
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
   this.product = fullContact.bio;
-  this.clients; //can find on wiki, doesn't appear to be consistent on fullcontact
-  this.mission; //not finding on fullcontact.  can always google. is scraping an option?
+  this.clients = wikiUrl;
+  this.mission = wikiUrl;
   this.contacts; //multiple contact points @twitter linked in and others. not consistent on multiple businesses
   this.location = fullContact.location;
   this.domain = clearBit.domain;
   this.logo = clearBit.logo;
   this.notes; //needs populated w/ sql notes
+
+
 
 }
 
@@ -196,7 +201,7 @@ function getCompanyDomain(request, response) {
       return res.json();
     })
     .then(function(json) {
-      console.log('json: (should return clearbit object)', json);
+      //console.log('json: (should return clearbit object)', json);
       getCompanyInfo(request, response, json);
     })
     .catch(error => handleError(error, response));
@@ -220,7 +225,7 @@ function getCompanyInfo(request, response, json) {
       // console.log(apiResponse.details.location);
       const newCompany = new Company(apiResponse, json);
       saveCompany(newCompany);
-      console.log(apiResponse.details);
+      //console.log(apiResponse.details);
 
       return newCompany;
     })
