@@ -53,14 +53,16 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 //+++++++++++++++ MODELS ++++++++++++++++
 
 function Company(fullContact, clearBit) {
+  let nameWithUnderscores = fullContact.name.replace(/([ ])+/g, '_'); //replace all whitespaces with underscores
+  let wikiUrl = `https://en.wikipedia.org/wiki/${nameWithUnderscores}`;
   //this.tableName = 'lastsearched';
   this.companyname  = fullContact.name;
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
   this.product = fullContact.bio;
-  this.clients; //can find on wiki, doesn't appear to be consistent on fullcontact
-  this.mission; //not finding on fullcontact.  can always google. is scraping an option?
+  this.clients = wikiUrl;
+  this.mission = wikiUrl;
   this.contacts; //multiple contact points @twitter linked in and others. not consistent on multiple businesses
   this.location = fullContact.location;
   this.domain = clearBit.domain;
