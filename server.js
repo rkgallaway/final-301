@@ -56,11 +56,11 @@ function Company(fullContact, clearBit) {
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
-  this.product;
-  this.clients;
-  this.mission;
-  this.contacts;
-  this.location;
+  this.product = fullContact.bio;
+  this.clients; //can find on wiki, doesn't appear to be consistent on fullcontact
+  this.mission; //not finding on fullcontact.  can always google. is scraping an option?
+  this.contacts; //multiple contact points @twitter linked in and others. not consistent on multiple businesses
+  this.location = fullContact.location;
   this.domain = clearBit.domain;
   this.logo = clearBit.logo;
   this.notes; //needs populated w/ sql notes
@@ -208,9 +208,11 @@ function getCompanyInfo(request, response, json) {
       return res.json();
     })
     .then(apiResponse => {
-      //console.log(apiResponse)
+      // console.log(apiResponse.details.location);
       const newCompany = new Company(apiResponse, json);
       saveCompany(newCompany);
+      console.log(apiResponse.details);
+
       return newCompany;
     })
     .then(results => {
@@ -218,6 +220,8 @@ function getCompanyInfo(request, response, json) {
     })
 
     .catch(error => handleError(error, response));
+  // console.log(apiResponse);
+
 }
 
 
