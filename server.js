@@ -213,7 +213,7 @@ function getCompanyInfo(request, response, json) {
       // console.log(apiResponse.details.location);
       const newCompany = new Company(apiResponse, json);
       saveCompany(newCompany);
-      console.log(apiResponse);
+      console.log(apiResponse.details);
 
       return newCompany;
     })
