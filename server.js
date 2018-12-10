@@ -178,9 +178,9 @@ const teamMembers = [
     title: 'Software Developer',
     profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
-    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    linkedin_url: 'https://www.linkedin.com/in/ryangallaway/',
     github_url: 'https://github.com/rkgallaway',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    bio: 'When not developing software or gardening, I enjoy the outdoors, travel, and spending time with my rescue dog Wiener; Wiener the Dog.',
   },
   {
     name: 'Jacob Anderson',
