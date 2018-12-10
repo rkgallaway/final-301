@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        width: 100%;
+        height: 500px;
+        /* height: 100vw; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><%- include('partials/header.ejs') %></header>
+    <main>
+      <form action="/map" method ="post">
+        <h1>Search</h1>
+        <label>City</label>
+        <input class="search" type="text" name="city" value="Seattle"></input>
+        <label>industry</label>
+        <input class="search" type="text" name="searchTerm" value="technology software company"></input>
+        <button type="submit">Go!</button>
+
+      </form>
+
+      results
+      
+      <div id="map"></div>
+    </main>
+
+
+    <footer><%- include('partials/footer') %></footer>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 47.606, lng: -122.332},
+          zoom: 12
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk&callback=initMap"
+    async defer>
+    </script>
+  </body>
+</html>

@@ -2,10 +2,10 @@
 //+++++++++++++++dependencies+++++++++++++++++++
 console.log('hi');
 const express = require('express');
-//const superagent = require('superagent');
+const superagent = require('superagent');
 const pg = require('pg');
 const fetch = require('node-fetch');
-//const util = require('util');
+const util = require('util');
 // const cors =  require('cors');
 const app = express();
 require('dotenv').config();
@@ -33,21 +33,25 @@ app.get('new-search')
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 //handler for POST request / searches
-
+const allCompanies = [];
 // //+++++++++++++++models++++++++++++++++
-function Company(fullContact, clearBit) {
+function Company(fullContact, clearBit, places) {
   this.tableName = 'lastSearched';
   this.companyName = fullContact.name;
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns ? fullContact.dataAddOns.name : 'unknown leaders';
-  this.product = 'products'
-  this.clients = 'clients'
-  this.mission = 'missions'
-  this.contacts = 'contacts'
-  this.location = 'location'
-  this.domain = clearBit.domain
-  this.logo = clearBit.logo
+  this.product = 'products';
+  this.clients = 'clients';
+  this.mission = 'missions';
+  this.contacts = 'contacts';
+  this.location = 'location';
+  this.domain = clearBit.domain || places.website || 'not available';
+  this.logo = clearBit.logo || 'not available';
+
+  this.lat = places.lat;
+  this.lng = places.lng;
+  allCompanies.push(this);
 }
 
 function saveCompany(company) {
@@ -112,7 +116,7 @@ function getCompanyDomain(request, response){
   }).then(function(res) {
     return res.json();
   }).then(function(json) {
-    console.log('json: (should return clearbit object)', json)
+    console.log('json: (should return clearbit object)', json);
     getCompanyInfo(request, response, json);
   })
     .catch( (error) => handleError(error) );
@@ -151,3 +155,93 @@ function getCompanyDomain(request, response){
 //     client.query(SQL,values);
 //   }
 // }
+
+
+app.get('/map', handleMap);
+app.post('/map', handleMapSearch);
+
+function handleMap(request, response){
+  console.log('map route hit');
+  response.render('map');
+}
+
+// Google geocode API request for searched city
+function handleMapSearch(request, response){
+  // console.log('map search route hit');
+  let userSearchCity = request.body.city;
+
+  const geoCodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${userSearchCity}&key=${process.env.GEOCODE_API_KEY}`;
+
+  superagent.get(geoCodeURL)
+    .then( (res) => {
+      const myLocation = {};
+      myLocation.lat = res.body.results[0].geometry.location.lat;
+      myLocation.lng = res.body.results[0].geometry.location.lng;
+      getPlaces(request, response, myLocation);
+    })
+    .catch( (err) => handleError(err,response));
+}
+
+function getPlaces(request, response, myLocation) {
+  const placesURL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myLocation.lat}, ${myLocation.lng}&radius=10000&type=business&keyword=${request.body.searchTerm}&key=${process.env.PLACES_API_KEY}&rankby=prominence`
+  superagent.get(placesURL)
+    .then( (res)=> {
+      res.body.results.forEach( (company) => {
+        const companyObj = {};
+        companyObj.name = company.name;
+        companyObj.place_id = company.place_id;
+
+        addDetails(request, response, companyObj);
+      });
+
+    })
+    .catch( (err) => handleError(err,response));
+}
+
+
+function addDetails(request, response, companyObj){
+
+  const placesDetailURL = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${companyObj.place_id}&fields=name,rating,website&key=${process.env.PLACES_API_KEY}`;
+
+  superagent.get(placesDetailURL)
+    .then( (res) => {
+      companyObj.rating = res.body.result.rating;
+      companyObj.website = res.body.result.website;
+      companyObj.lat = res.body.result.geometry.location.lat;
+      companyObj.lng = res.body.result.geometry.location.lng;
+
+      getCompanyInfoTwo(request, response, companyObj);
+    })
+    .catch( (err) => handleError(err));
+
+}
+
+function getCompanyInfoTwo(request, response, companyObj){ // we passed in trying to find the dmoain we will get
+  fetch('https://api.fullcontact.com/v3/company.enrich',{
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.FULLCONTACT_API_KEY}` //add to .env
+    },
+    body: JSON.stringify({
+      'domain': companyObj.website //we added, not sure where it lives yet
+    })
+  })
+    .then(function(res) {
+      return res.json();
+    })
+    .then(apiResponse => {
+      //console.log(apiResponse)
+      const newCompany = new Company(apiResponse, '', companyObj)
+      // saveCompany(newCompany);
+      return newCompany;
+    })
+    .then( (results) => {
+      // console.log('new company: ', results);
+      return response.render('map', {results: results})
+    })
+
+    .catch( (error) => handleError(error) );
+}
+
+
+
