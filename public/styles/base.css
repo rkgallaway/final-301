@@ -389,3 +389,7 @@ body section.company {
 .hideStuff {
   display: none;
 }
+
+.dropDown a {
+  margin-left: 40vw;
+}

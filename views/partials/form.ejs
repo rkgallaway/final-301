@@ -5,7 +5,7 @@
     <div class="formHeader">
         <button class="minus" type="button" onclick="toggleFunction()">-</button>
         <button class="plus" type="button" onclick="toggleFunction()">+</button>
-        <input type="text" name="companyname" value="<%- company.companyname %>" placeholder="Company Name">
+        <input type="text" name="companyName" value="<%- company.companyname %>" placeholder="Company Name">
         
         <div>
           <img src="<%- company.logo %>" />
@@ -51,5 +51,6 @@
     <div class="dropDown hideStuff">
     <textarea class="userNotes" name="notes" value="<%- company.notes %>" placeholder="Enter personal notes on company here." cols="30" rows="10"><%- company.notes %></textarea>
     <button type="submit"><%- 'update' === formAction ? "Update This Company" : "Add This Company" %></button>
+    <a href="/delete/<%= company.id %>">Delete from saved</a>
     </div>
 </form>
