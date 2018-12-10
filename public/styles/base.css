@@ -15,16 +15,16 @@ html {
 main {
   height: 100%;
   box-sizing: border-box;
+  /* padding: 5px; */
 }
 
 body {
   color: rgb(44, 44, 44);
   font-family: sans-serif;
   position: relative;
-  padding: 5px;
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(80, 79, 79);
+  background-color: rgb(153, 153, 153);
 }
 
 header section p {
@@ -90,10 +90,52 @@ header li .fas, header li .fa{
   display: none;
 }
 
-body section {
-  background-color: rgb(219, 219, 219);
+section.company, section.people {
+  background-color: rgb(235, 235, 235);
+}
+
+.people {
   display: flex;
-  justify-content: left;
+  flex-wrap: wrap; 
+  text-align: justify;
+  padding: 10px;
+  /* border-bottom: 2px dashed rgb(44, 44, 44); */
+  box-shadow: 4px 4px rgb(235, 182, 176);
+  margin: 10px;
+  border-radius: 2px;
+}
+
+section.people img {
+  width: 50%;
+  height: 50%;
+  margin: 0% 25% 0% 25%;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  border: 5px dashed rgb(235, 182, 176);
+}
+
+.people h2 {
+  font-size: 2em;
+  margin-bottom: 8px;
+}
+
+.people .title {
+  font-style: italic;
+  margin: 0px 0px 5px 5px;
+}
+
+.people .fab {
+ margin: 0px 10px 5px 5px;
+ color: inherit;
+ text-decoration: none;
+}
+
+.people .titleBar {
+  width: 100%;
+}
+
+body section.company {
+  display: flex;
   flex-wrap: nowrap;
 }
 
