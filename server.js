@@ -1,7 +1,4 @@
 'use strict';
-console.log('~~~~~~~~~~~~');
-
-//+++++++++++++++ DEPENDENCIES +++++++++++++++++++
 
 const express = require('express');
 const pg = require('pg');
@@ -255,3 +252,76 @@ function getCompanyInfo(request, response, json) {
 //     client.query(SQL,values);
 //   }
 // }
+
+
+const teamMembers = [
+  {
+    name: 'Fletcher LaRue',
+    title: 'Software Developer',
+    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
+    bio: 'Currently enrolled in Code Fellows Seattle campus on the Full Stack JavaScript course. This will formalize my long passion for coding, problem solving, and building cool stuff! My background is in Mechanical Engineering, but I\'ve seen the light and switched to web development. Not out of the blue though over the years I\'ve done side projects  courses and my family of web developers.',
+  },
+  {
+    name: 'Tyler R Hood',
+    title: 'Software Developer',
+    profile_pic_path: '/images/Tyler_Hood_about.jpg',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
+    github_url: 'https://github.com/Thood50',
+    bio: 'Im alive',
+  },
+  {
+    name: 'C',
+    title: 'Software Developer',
+    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
+    bio: '',
+  },
+  {
+    name: 'D',
+    title: 'Software Developer',
+    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    twitter_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
+    bio: '',
+  }
+];
+
+app.get('/about', handleAbout);
+// app.get('/', getHome)
+
+function handleAbout(request, response) {
+
+  const shuffledPeople = [];
+
+  while (shuffledPeople.length < 4) {
+    // pick a number
+    let num = Math.floor(Math.random()*4);
+
+    let included = false;
+    // if it exists in the object
+
+    for (let i = 0; i < shuffledPeople.length; i ++){
+      if (shuffledPeople[i].name === teamMembers[num].name){
+        included = true;
+      }
+    }
+
+    // dont add them
+    if (!included) {
+      shuffledPeople.push(teamMembers[num]);
+    }
+
+  }
+  response.render('about', {teamMembers: shuffledPeople});
+}
+
+
+
+
