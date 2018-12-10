@@ -5,11 +5,11 @@ const pg = require('pg');
 const fetch = require('node-fetch');
 const methodOverride = require('method-override');
 const app = express();
+const superagent = require('superagent');
 
 require('dotenv').config();
 const PORT = process.env.PORT;
 
-//const superagent = require('superagent');
 //const util = require('util');
 // const cors =  require('cors');
 
@@ -53,7 +53,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 function Company(fullContact, clearBit) {
   //this.tableName = 'lastsearched';
-  this.companyname = fullContact.name;
+  this.companyname  = fullContact.name;
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
@@ -174,8 +174,12 @@ function getHome(request, response) {
 
 //error handler
 function handleError(err, res) {
-  //console.error(err);
-  res.render('error.ejs', { error: 'Error recieved' });
+  console.error(err);
+
+  let url = 'http://api.icndb.com/jokes/random?firstName=Chuck&amp;lastName=Norris';
+
+  superagent.get(url)
+    .then(results => res.render('error.ejs', { error: results.body.value.joke}))
 }
 
 function getCompanyDomain(request, response) {

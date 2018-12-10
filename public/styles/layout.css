@@ -1,0 +1,11 @@
+.plus {
+    display: flex;
+  }
+  
+  .minus {
+    display: none;
+  }
+  
+  .hideStuff {
+    display: flex;
+  }

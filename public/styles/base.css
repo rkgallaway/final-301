@@ -92,11 +92,16 @@ h1 {
 
 /* nav items */
 header li {
-  height: 50px;
+  height: 10vw;
   display: flex;
   align-items: center;
   background-color: rgb(226, 226, 226);
   width: 100%;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
 }
 
 header li:not(:first-child){
@@ -392,4 +397,13 @@ body section.company {
 
 .dropDown a {
   margin-left: 40vw;
+}
+
+.theNorris {
+  /* outline: 2px solid red; */
+  /* margin: 5vw; */
+  /* height: 100%; */
+  width: 100%;
+  padding: 4vw;
+  box-sizing: border-box;
 }
