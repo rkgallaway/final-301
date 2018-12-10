@@ -43,6 +43,7 @@ app.get('/', getHome);
 app.post('/results', getCompanyDomain);
 app.put('/update/:company_id', editCompanyDetails);
 app.post('/add', saveNewCompanyDetails);
+app.delete('/delete', deleteCompany);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
@@ -52,7 +53,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 function Company(fullContact, clearBit) {
   //this.tableName = 'lastsearched';
-  this.companyName = fullContact.name;
+  this.companyname = fullContact.name;
   this.founded = fullContact.founded;
   this.size = fullContact.employees;
   this.leaders = fullContact.dataAddOns? fullContact.dataAddOns.name: 'unknown leaders';
@@ -67,12 +68,11 @@ function Company(fullContact, clearBit) {
 
 }
 
-
 //++++++++++++++ SQL +++++++++++++++
 
 function saveCompany(company) {
   const values = [
-    company.companyName,
+    company.companyname,
     company.founded,
     company.size,
     company.leaders,
@@ -89,17 +89,17 @@ function saveCompany(company) {
   let SQL = `DELETE FROM lastsearched;`;
   client.query(SQL);
 
-  SQL = `INSERT INTO lastsearched (companyName, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
+  SQL = `INSERT INTO lastsearched (companyname, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
 
   client.query(SQL, values);
 }
 
 function editCompanyDetails(request, response) {
 
-  let SQL = `UPDATE savedcompanies SET companyName=$1, founded=$2, size=$3, leaders=$4, product=$5, clients=$6, mission=$7, contacts=$8, location=$9, domain=$10, logo=$11, notes=$12 WHERE id=${request.params.company_id};`;
+  let SQL = `UPDATE savedcompanies SET companyname=$1, founded=$2, size=$3, leaders=$4, product=$5, clients=$6, mission=$7, contacts=$8, location=$9, domain=$10, logo=$11, notes=$12 WHERE id=${request.params.company_id};`;
 
   let values = [
-    request.body.companyName,
+    request.body.companyname,
     request.body.founded,
     request.body.size,
     request.body.leaders,
@@ -122,10 +122,10 @@ function editCompanyDetails(request, response) {
 }
 
 function saveNewCompanyDetails(request, response) {
-  let SQL = `INSERT INTO savedcompanies (companyName, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
+  let SQL = `INSERT INTO savedcompanies (companyname, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
 
   let values = [
-    request.body.companyName,
+    request.body.companyname,
     request.body.founded,
     request.body.size,
     request.body.leaders,
@@ -142,6 +142,15 @@ function saveNewCompanyDetails(request, response) {
   return client.query(SQL, values)
     .then(() => {
       return response.redirect('/');
+    })
+    .catch(error => handleError(error, response));
+}
+
+function deleteCompany(request, response) {
+  let SQL = `DELETE FROM savedcompanies WHERE companyname='${request.body.companyname}';`;
+  return client.query(SQL)
+    .then(() => {
+      return response.redirect('/')
     })
     .catch(error => handleError(error, response));
 }
