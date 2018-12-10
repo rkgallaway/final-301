@@ -43,7 +43,7 @@ app.get('/', getHome);
 app.post('/results', getCompanyDomain);
 app.put('/update/:company_id', editCompanyDetails);
 app.post('/add', saveNewCompanyDetails);
-app.delete('/delete/:company_id', deleteCompany);
+app.get('/delete/:company_id', deleteCompany);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
@@ -147,11 +147,11 @@ function saveNewCompanyDetails(request, response) {
 }
 
 function deleteCompany(request, response) {
-  let SQL = `DELETE FROM savedcompanies WHERE id='${request.params.company_id}';`;
-  return client.query(SQL)
-    .then(() => {
-      return response.redirect('/')
-    })
+  let SQL = `DELETE FROM savedcompanies WHERE id=$1;`;
+  let values = [request.params.company_id];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/'))
     .catch(error => handleError(error, response));
 }
 
