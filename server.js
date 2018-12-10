@@ -64,7 +64,7 @@ function Company(fullContact, clearBit) {
   this.domain = clearBit.domain;
   this.logo = clearBit.logo;
   this.notes; //needs populated w/ sql notes
-  console.log(this);
+
 }
 
 
@@ -220,45 +220,12 @@ function getCompanyInfo(request, response, json) {
     .catch(error => handleError(error, response));
 }
 
-// function getCompany(request, response){
-
-// }
-
-// //reference from book app
-// function createSearch(request, response) {
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-//   superagent.get(url)
-//     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
-//     .then(results => response.render('pages/searches/show', {searchResults: results}))
-//     .catch(error => handleError(error, response))
-// }
-// // reference above
-
-// //on page load
-// function getHome(request, response){
-//   let SQL = 'SELECT * from savedCompanies;';
-//   return client.query(SQL)
-//     .then( (results) => {
-//       response.render('/', {showSavedCompanies: results.rows});
-//     })
-//     .catch( (error) => handleError(error) );
-// }
-
-// Company.prototype = {
-//   save: function() {
-//     const SQL = `INSERT INTO ${this.tableName} (companyName, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
-//     const values = [this.companyName, this.founded, this.size, this.leaders, this.product, this.clients, this.mission, this.contacts, this.location, this.domain, this.logo];
-
-//     client.query(SQL,values);
-//   }
-// }
-
 
 const teamMembers = [
   {
     name: 'Fletcher LaRue',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
@@ -267,29 +234,29 @@ const teamMembers = [
   {
     name: 'Tyler R Hood',
     title: 'Software Developer',
-    profile_pic_path: '/images/Tyler_Hood_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
     github_url: 'https://github.com/Thood50',
     bio: 'Im alive',
   },
   {
-    name: 'C',
+    name: 'Ryan Gallaway',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
-    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
-    github_url: 'https://github.com/asdFletcher',
-    bio: '',
+    linkedin_url: 'https://www.linkedin.com/in/ryangallaway/',
+    github_url: 'https://github.com/rkgallaway',
+    bio: 'When not developing software or gardening, I enjoy the outdoors, travel, and spending time with my rescue dog Wiener; Wiener the Dog.',
   },
   {
-    name: 'D',
+    name: 'Jacob Anderson',
     title: 'Software Developer',
-    profile_pic_path: '/images/Fletcher_LaRue_about.jpg',
+    profile_pic_path: 'https://via.placeholder.com/500',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
     github_url: 'https://github.com/asdFletcher',
-    bio: '',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   }
 ];
 
