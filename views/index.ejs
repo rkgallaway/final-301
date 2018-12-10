@@ -7,16 +7,12 @@
   <body>
     <header><%- include('partials/header.ejs') %></header>
     <main>
-        <form action="/results" method ="post">
-          <fieldset>
-              <h1>Search</h1>
-              <label>
-                  <input class="search" type="text" name="searchTerm"></input>    
-              </label>
-              <button type="submit">Go!</button>
-          </fieldset>
+      <form class="searchForm" action="/results" method ="post">
+            <div>
+              <input class="search" type="text" name="searchTerm" placeholder="Enter company here"></input>
+              <button type="submit">Search</button>
+            </div>
       </form>
-      <section class="">
         <ul class="" id="">
           <% results.forEach( company => { %>
           <section class="company">
@@ -24,7 +20,6 @@
           </section>
           <% }) %>
         </ul>
-      </section>
     </main>
 
     <footer><%- include('partials/footer') %></footer>

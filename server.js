@@ -1,8 +1,5 @@
 'use strict';
 
-console.log('~~~~~~~~~~~~');
-console.log('hi');
-
 const express = require('express');
 const pg = require('pg');
 const fetch = require('node-fetch');
@@ -67,6 +64,7 @@ function Company(fullContact, clearBit) {
   this.domain = clearBit.domain;
   this.logo = clearBit.logo;
   this.notes; //needs populated w/ sql notes
+
 }
 
 
@@ -221,39 +219,6 @@ function getCompanyInfo(request, response, json) {
 
     .catch(error => handleError(error, response));
 }
-
-// function getCompany(request, response){
-
-// }
-
-// //reference from book app
-// function createSearch(request, response) {
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-//   superagent.get(url)
-//     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult)))
-//     .then(results => response.render('pages/searches/show', {searchResults: results}))
-//     .catch(error => handleError(error, response))
-// }
-// // reference above
-
-// //on page load
-// function getHome(request, response){
-//   let SQL = 'SELECT * from savedCompanies;';
-//   return client.query(SQL)
-//     .then( (results) => {
-//       response.render('/', {showSavedCompanies: results.rows});
-//     })
-//     .catch( (error) => handleError(error) );
-// }
-
-// Company.prototype = {
-//   save: function() {
-//     const SQL = `INSERT INTO ${this.tableName} (companyName, founded, size, leaders, product, clients, mission, contacts, location, domain, logo, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
-//     const values = [this.companyName, this.founded, this.size, this.leaders, this.product, this.clients, this.mission, this.contacts, this.location, this.domain, this.logo];
-
-//     client.query(SQL,values);
-//   }
-// }
 
 
 const teamMembers = [
