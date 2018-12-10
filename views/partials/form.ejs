@@ -28,7 +28,7 @@
 
     <div class="mission hideStuff">
         <label>Mission:</label>
-        <textarea type="text" name="mission" value="<%= company.mission %>" placeholder="Company Mission" rows="6"><%- company.mission %></textarea>
+        <a target=”_blank” href="<%- company.mission %>"><%- company.companyname %>'s Wiki page</a>
     </div>
     
     <div class="leaders hideStuff">    
@@ -36,7 +36,7 @@
         <label>Clients:</label>
         
         <input type="text" name="leaders" value="<%- company.leaders %>" placeholder="Company Leaders">
-        <input type="text" name="clients" value="<%- company.clients %>" placeholder="Company Clients">
+        <a target=”_blank” href="<%- company.clients %>"><%- company.companyname %>'s Wiki page</a>
     </div>
 
     <div class="footer">
