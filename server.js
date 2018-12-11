@@ -53,7 +53,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 //+++++++++++++++ MODELS ++++++++++++++++
 
 function Company(fullContact, clearBit) {
-  let nameWithUnderscores = clearBit.name.replace(/([ ])+/g, '_'); //replace all whitespaces with underscores
+  let nameWithUnderscores = clearBit.name ? clearBit.name.replace(/([ ])+/g, '_') : ''; //replace all whitespaces with underscores
   let wikiUrl = `https://en.wikipedia.org/wiki/${nameWithUnderscores}`;
   //this.tableName = 'lastsearched';
   this.companyname  = clearBit.name;
