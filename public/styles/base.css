@@ -287,6 +287,10 @@ body section.company {
   color: var(--icon-color);
 }
 
+.addedLate {
+  margin-top: 25px;
+}
+
 .minus {
   display: none;
 }
