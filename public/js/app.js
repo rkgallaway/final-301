@@ -1,6 +1,6 @@
 'use strict';
 
-$('.hamburger').on('click', () => {
+$('.hamburger').on('mousedown', () => {
 
   $('.nav').animate({
     height: 'toggle',
