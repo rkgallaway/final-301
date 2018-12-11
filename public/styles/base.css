@@ -1,5 +1,5 @@
 * {
-  outline: 1px solid rgb(143, 137, 233) !important;
+  /* outline: 1px solid rgb(143, 137, 233) !important; */
 }
 
 @media only screen and (min-width: 0px) and (max-width: 425px) {} /* mobile phones up to 425 */
