@@ -13,15 +13,13 @@
               <button type="submit">Search</button>
             </div>
       </form>
-
-      <ul class="" id="">
-        <% results.forEach( company => { %>
-        <section class="company">
-          <%- include('partials/form', {formAction: 'update', company: company}) %>
-        </section>
-        <% }) %>
-      </ul>
-
+        <ul class="" id="">
+          <% results.forEach( company => { %>
+          <section class="company">
+            <%- include('partials/form', {formAction: 'update', company: company}) %>
+          </section>
+          <% }) %>
+        </ul>
     </main>
 
     <footer><%- include('partials/footer') %></footer>
