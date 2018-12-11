@@ -1,55 +1,69 @@
-<form action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
 
-    <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
+<form class="mainform" action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
 
-    <div class="formHeader">
-        <button class="minus" type="button" onclick="toggleFunction()">-</button>
-        <button class="plus" type="button" onclick="toggleFunction()">+</button>
-        <input type="text" name="companyname" value="<%- company.companyname %>" placeholder="Company Name">
-        
-        <div>
-          <img src="<%- company.logo %>" />
+
+    <div class="inner-main-form">
+        <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
+
+        <div class="formHeader">
+            <button class="minus" type="button" onclick="toggleFunction()"><span class="fas fa-minus"></span></button>
+            <button class="plus" type="button" onclick="toggleFunction()"><span class="fas fa-plus"></span></button>
+            <input type="text" name="companyname" value="<%- company.companyname %>" placeholder="Company Name">
+            
+            <div>
+                <img src="<%- company.logo %>" />
+            </div>
+
         </div>
-    </div>
 
-    <input class="location" type="text" name="location" value="<%- company.location %>" placeholder="Company Location">
-    
-    <div class="companyProduct">
-        <label>Product:</label>
-        <textarea type="text" name="product" value="<%- company.product %>" placeholder="Company Product" rows="2"><%- company.product %></textarea>
-    </div>
-    
-    <div class="numbers hideStuff">
-        <label>Employees:</label>
-        <label>Founded:</label>
-        <input type="text" name="size" value="<%- company.size %>" placeholder="Company Size">
-        <input type="text" name="founded" value="<%- company.founded %>" placeholder="Founding Year">
-    </div>
 
-    <div class="mission hideStuff">
-        <label>Mission:</label>
-        <a target=”_blank” href="<%- company.mission %>"><%- company.companyname %>'s Wiki page</a>    </div>
-    
-    <div class="leaders hideStuff">    
-        <label>Leadership:</label>
-        <label>Clients:</label>
+        <input class="location" type="text" name="location" value="<%- company.location %>" placeholder="Company Location">
         
-        <input type="text" name="leaders" value="<%- company.leaders %>" placeholder="Company Leaders">
-        <a target=”_blank” href="<%- company.clients %>"><%- company.companyname %>'s Wiki page</a>
-     </div>
-
-    <div class="footer">
-        <div>
-            <a href="https://<%- company.twitter %>" target="_blank"><i class="fab fa-twitter-square"></i></a>
-            <a href="https://<%- company.facebook %>" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://<%= company.domain %>" target="_blank"><i class="fas fa-external-link-square-alt"></i></a>
+        <div class="companyProduct">
+            <label class="infoTitle">Product:</label>
+            <textarea type="text" name="product" value="<%- company.product %>" placeholder="Company Product" rows="2"><%- company.product %></textarea>
         </div>
-        <button class="minus" type="button" onclick="toggleFunction()">-</button> 
-        <button class="plus" type="button" onclick="toggleFunction()">+</button>
-    </div>       
+        
+        <div class="numbers hideStuff">
+            <label class="infoTitle">Employees:</label>
+            <label class="infoTitle">Founded:</label>
+            <input type="text" name="size" value="<%- company.size %>" placeholder="Size">
+            <input type="text" name="founded" value="<%- company.founded %>" placeholder="Year">
+        </div>
+
+
+        <div class="mission hideStuff">
+            <label class="infoTitle">Mission:</label>
+            <a target=”_blank” href="<%- company.mission %>"><%- company.companyname %> Wiki page</a>
+            <textarea type="text" name="mission" value="<%= company.mission %>" placeholder="Company Mission" rows="6"><%- company.mission %></textarea>
+        </div>
+        
+        <div class="leaders hideStuff">    
+            <label class="infoTitle">Leadership:</label>
+            <label class="infoTitle">Clients:</label>
+            
+            <input type="text" name="leaders" value="<%- company.leaders %>" placeholder="Leaders">
+            <a target=”_blank” href="<%- company.clients %>"><%- company.companyname %> Wiki page</a>
+            <input class="addedLate" type="text" name="clients" value="<%- company.clients %>" placeholder="Enter clients here">
+        </div>
+
+        <div class="footer">
+            <div>
+                <a href="https://<%- company.twitter %>" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                <a href="https://<%- company.facebook %>" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://<%= company.domain %>" target="_blank"><i class="fas fa-external-link-square-alt"></i></a>
+            </div>
+            <button class="minus" type="button" onclick="toggleFunction()"><span class="fas fa-minus"></span></button> 
+            <button class="plus" type="button" onclick="toggleFunction()"><span class="fas fa-plus"></span></button>
+        </div>  
+    </div>    
+     
+
     <div class="dropDown hideStuff">
-    <textarea class="userNotes" name="notes" value="<%- company.notes %>" placeholder="Enter personal notes on company here." cols="30" rows="10"><%- company.notes %></textarea>
-    <button type="submit"><%- 'update' === formAction ? "Update This Company" : "Add This Company" %></button>
-    <a href="/delete/<%= company.id %>">Delete from saved</a>
+        <textarea class="userNotes" name="notes" value="<%- company.notes %>" placeholder="Enter personal notes on company here." cols="30" rows="10"><%- company.notes %></textarea>
+        <div class="botbut">
+            <button type="submit"><%- 'update' === formAction ? "Update" : "Save" %></button>
+            <a href="/delete/<%= company.id %>">Delete</a>
+        </div>
     </div>
 </form>

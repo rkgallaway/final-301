@@ -244,6 +244,19 @@ body section.company {
   width: 10%;
 }
 
+
+.addedLate {
+  margin-top: 25px;
+}
+
+.minus {
+  display: none;
+}
+
+.footer .minus, .footer .plus {
+  margin-right: 10px;
+}
+
 .formHeader img {
   width: 100%;
 }
@@ -399,8 +412,27 @@ body section.company {
   display: flex;
 }
 
-.hideStuff {
-  display: none;
+
+.botbut button, .botbut a {
+  color: var(--main-text-color);
+  font-size: 100%;
+  border: 3px solid var(--main-text-color);
+  border-radius: 10px;
+  transition-duration: 0.05s;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.botbut button {
+  padding: 5px 20px 5px 20px;
+  background-color: var(--header-bkg);
+  border-bottom-style: outset;
+}
+
+.dropDown button:hover {
+  background-color: var(--icon-color);
+  color: var(--header-bkg);
 }
 
 .dropDown a {
@@ -416,3 +448,112 @@ body section.company {
   box-sizing: border-box;
 }
 
+@media only screen and (min-width: 0px)  {
+
+}
+
+/* mobile phones */ 
+/* up to 425 */
+/* tablets */
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* about page media query styling */
+/*             tablets            */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media only screen and (min-width: 426px) {
+  .people {
+    /* max-width: 425px; */
+    margin: 10px;
+    box-sizing: border-box;
+    width: 45%;
+  }
+  main {
+    /* margin: auto; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .people .bio {
+    align-self: stretch;
+  }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* about page media query styling */
+/*         laptop / desktop       */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media only screen and (min-width: 769px) {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .people {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  section.people .imgContainer {
+    max-width: 200px;
+    margin: 0;
+    margin: 5px 30px 5px 10px;
+    width: 25%;
+  }
+
+  .people .allText {
+    align-self: flex-start;
+    width: 75%;
+  }
+}
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  home page media query styling */
+/*             tablets            */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media only screen and (min-width: 426px) {
+  main ul {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+  }
+  .company {
+    margin: 10px;
+    box-sizing: border-box;
+    /* width: 35%; */
+    width: 300px;
+    /* max-width: 425px; */
+  }
+
+  .formHeader, .location, .company .companyProduct, .numbers, .mission, .leaders {
+    margin-bottom: var(--form-section-pacing-larger);
+  }
+
+  .dropDown .userNotes {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80vw;
+    padding: 10px;
+  }
+
+  .footer div a {
+    margin-right: 35px;
+  }
+  
+  .userNotes {
+    max-height: 300px;
+    padding: 10px;
+  }
+
+}
