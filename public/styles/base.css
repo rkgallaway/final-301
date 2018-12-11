@@ -47,6 +47,11 @@
   --site-name-size: 160%;
   --nav-icons: 150%;
 
+  /* form vertical spacing */
+  --form-section-pacing-mobile: 10vw;
+  --form-section-pacing-larger: 20px;
+
+
 }
 
 
@@ -153,6 +158,7 @@ header li .fas, header li .fa {
   width: 50vw;
   display: none;
   z-index: 1;
+  max-width: 400px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -186,7 +192,6 @@ header li .fas, header li .fa {
   font-size: var(--search-text-size);
   text-align: center;
   border-radius: 25px;
-  /* border: none; */
   color: var(--main-text-color);
   background-color: var(--header-bkg);
 }
@@ -210,9 +215,9 @@ header li .fas, header li .fa {
 }
 
 
-
-
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*         company form styling        */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 form {
   width: 100%;
@@ -234,18 +239,20 @@ body section.company {
 }
 
 .company {
-  /* border: 2px solid rgb(241, 241, 241); */
-  margin-bottom: 30vw;
-  /* border-radius: 10px; */
+  color: var(--main-text-color);
+  box-shadow: 4px 4px var(--dropbox-color);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  margin-bottom: 10vw;
   outline: 1px solid var(--main-text-color);
 }
 
 .formHeader {
-  /* background-color: red; */
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10vw;
+  
 }
 
 .formHeader input{
@@ -253,7 +260,6 @@ body section.company {
   font-size: 200%;
   font-weight: bold;
   text-align: center;
-
 }
 
 .formHeader div {
@@ -267,9 +273,28 @@ body section.company {
   width: 70%;
 }
 
-.formHeader button {
-  width: 10%;
+.minus, .plus{
+  width: 8vw;
+  height: 8vw;
+  min-width: 25px;
+  min-height: 25px;
+  max-width: 50px;
+  max-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100%;
+  color: var(--icon-color);
 }
+
+.minus {
+  display: none;
+}
+
+.footer .minus, .footer .plus {
+  margin-right: 10px;
+}
+
 
 .formHeader img {
   width: 100%;
@@ -277,29 +302,32 @@ body section.company {
 
 .location {
   width: 100%;
- text-align: center;
- margin-bottom: 10vw;
+  text-align: center;
 }
 
+.formHeader, .location, .company .companyProduct, .numbers, .mission, .leaders {
+  margin-bottom: var(--form-section-pacing-mobile);
+}
+
+.companyProduct label {
+  display: inline-block;
+}
 .company .companyProduct {
-  /* background-color: red; */
   text-align: center;
-  margin-bottom: 10vw;
+  
 }
 
 .companyProduct textarea {
   width: 100%;
   box-sizing: border-box;
-
+  text-align: center;
 }
 
 .numbers {
-  /* background-color: rgb(177, 145, 145); */
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-evenly; */
   justify-content: space-evenly;
-  margin-bottom: 10vw;
+  
 }
 
 .numbers label{
@@ -308,12 +336,13 @@ body section.company {
 }
 
 .numbers input {
-  /* width: 40%; */
+  width: 50%;
+  font-size: 200%;
+  margin-top: 5px;
   text-align: center;
 }
 
 .company textarea:not(.userNotes) {
-  /* background-color: blue; */
   background-color: inherit;
   border: none;
   resize: none;
@@ -322,16 +351,15 @@ body section.company {
 
 
 .mission {
-  /* background-color: rgb(253, 212, 212); */
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10vw;
+  
   text-align: center;
+  justify-content: center;
 }
 
 .mission label{
   width: 100%;
-
 }
 
 .mission textarea {
@@ -342,7 +370,7 @@ body section.company {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 10vw;
+  
 }
 
 .leaders label{
@@ -350,36 +378,35 @@ body section.company {
   text-align: center;
 }
 
-.leaders input {
+.leaders input , .leaders a{
+  width: 50%;
   text-align: center;
 }
 
 .footer {
   background-color: var(--footer-bkg);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
 .footer div {
+  max-width: 200px;
   width: 90%;
-  margin-left: 10vw;
+  margin-left: 20px;
   height: 10vw;
+  max-height: 75px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.footer button {
-  width: 10%;
-  margin-right: 10vw;
-}
-
 .footer div a {
+  font-size: 150%;
   text-decoration: none;
   color: white;
-  margin-right: 5vw;
+  margin-right: 6vw;
 }
 
 .dropDown {
@@ -407,32 +434,80 @@ body section.company {
 }
 
 .dropDown button {
-  height: 5vw;
-  border-radius: 25%;
+  /* /* height: 5vw; */
+  /* border-radius: 25%;
   margin-bottom: 5vw;
-  margin-left: 5vw;
+  margin-left: 5vw; */
 }
 
 .footer div .fas {
-  /* background-color: red; */
   transform: translateY(1px);;
-}
-
-.plus {
-  display: none;
-}
-
-.minus {
-  display: flex;
 }
 
 .hideStuff {
   display: none;
 }
 
-.dropDown a {
-  margin-left: 40vw;
+.botbut {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
+
+.botbut a {
+  background-color: rgb(134, 65, 65);
+  border-bottom-style: inset;
+  padding: 5px 10px 5px 10px;
+}
+
+.botbut button {
+  padding: 5px 8vw 5px 8vw;
+  background-color: var(--header-bkg);
+  border-bottom-style: outset;
+}
+
+.botbut button, .botbut a {
+  color: var(--main-text-color);
+  font-size: 100%;
+  border: 3px solid var(--main-text-color);
+  border-radius: 10px;
+  transition-duration: 0.05s;
+  text-decoration: none;
+  cursor: pointer;
+  
+  margin: 5px;
+}
+
+.dropDown button:hover {
+  background-color: var(--icon-color);
+  color: var(--header-bkg);
+}
+
+.infoTitle {
+  margin-bottom: 5px;
+  font-size: 125%;
+  font-variant: small-caps;
+  color: rgb(153, 99, 0);
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .theNorris {
   /* outline: 2px solid red; */
@@ -477,8 +552,6 @@ body section.company {
   }
 }
 
-
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* about page media query styling */
 /*         laptop / desktop       */
@@ -489,7 +562,6 @@ body section.company {
     flex-wrap: wrap;
     align-items: flex-start;
   }
-
 
   .people {
     flex-wrap: nowrap;
@@ -511,7 +583,50 @@ body section.company {
     align-self: flex-start;
     width: 75%;
   }
-
 }
 
 
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  home page media query styling */
+/*             tablets            */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media only screen and (min-width: 426px) {
+  main ul {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+  }
+  .company {
+    margin: 10px;
+    box-sizing: border-box;
+    /* width: 35%; */
+    width: 300px;
+    /* max-width: 425px; */
+  }
+
+  .formHeader, .location, .company .companyProduct, .numbers, .mission, .leaders {
+    margin-bottom: var(--form-section-pacing-larger);
+  }
+
+  .dropDown .userNotes {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80vw;
+  }
+
+  .footer div a {
+    margin-right: 35px;
+  }
+  
+  .userNotes {
+    max-height: 300px;
+    padding: 10px;
+    /* margin-bottom: 25px; */
+  }
+
+  
+}
