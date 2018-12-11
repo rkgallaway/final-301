@@ -1,5 +1,6 @@
 <form class="mainform" action="<%= 'update' === formAction ? `/update/${company.id}` : '/add' %>" method="post">
 
+
     <div class="inner-main-form">
         <input type="hidden" name="_method" value="<%- 'update' === formAction ? 'put' : 'post' %>">
 
@@ -11,7 +12,9 @@
             <div>
                 <img src="<%- company.logo %>" />
             </div>
+
         </div>
+
 
         <input class="location" type="text" name="location" value="<%- company.location %>" placeholder="Company Location">
         
@@ -26,6 +29,7 @@
             <input type="text" name="size" value="<%- company.size %>" placeholder="Size">
             <input type="text" name="founded" value="<%- company.founded %>" placeholder="Year">
         </div>
+
 
         <div class="mission hideStuff">
             <label class="infoTitle">Mission:</label>
