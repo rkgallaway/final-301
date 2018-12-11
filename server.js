@@ -260,7 +260,7 @@ const teamMembers = [
   {
     name: 'Tyler R Hood',
     title: 'Software Developer',
-    profile_pic_path: 'images/Tyler_about.png',
+    profile_pic_path: 'images/tyler.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/tyler-r-hood/',
     github_url: 'https://github.com/Thood50',
@@ -269,7 +269,7 @@ const teamMembers = [
   {
     name: 'Ryan Gallaway',
     title: 'Software Developer',
-    profile_pic_path: 'images/Ryan_about.jpg',
+    profile_pic_path: 'images/ryan.jpg',
     twitter_url: '#',
     linkedin_url: 'https://www.linkedin.com/in/ryangallaway/',
     github_url: 'https://github.com/rkgallaway',
@@ -280,8 +280,8 @@ const teamMembers = [
     title: 'Software Developer',
     profile_pic_path: 'images/Jake_Anderson_About.jpg',
     twitter_url: '#',
-    linkedin_url: 'https://www.linkedin.com/in/jacob-merrill-anderson/',
-    github_url: 'https://github.com/1anderson2jacob',
+    linkedin_url: 'https://www.linkedin.com/in/fletcher-larue/',
+    github_url: 'https://github.com/asdFletcher',
     bio: 'Jake grew up on legos, little did he know they wouldn\'t just be the building blocks of the castle he was making but also the building blocks for problem solving skills and lego piece bartering skills. Will graduate Code Fellows in February of 2019 with a degree in software design. If there\'s one thing that puts the motion in this man\'s ocean commotion it\'s playing card games with friends.',
   }
 ];
@@ -290,14 +290,16 @@ app.get('/about', handleAbout);
 // app.get('/', getHome)
 
 function handleAbout(request, response) {
+
   const shuffledPeople = [];
 
   while (shuffledPeople.length < 4) {
     // pick a number
     let num = Math.floor(Math.random()*4);
 
-    // if it exists in the object
     let included = false;
+    // if it exists in the object
+
     for (let i = 0; i < shuffledPeople.length; i ++){
       if (shuffledPeople[i].name === teamMembers[num].name){
         included = true;
@@ -308,6 +310,7 @@ function handleAbout(request, response) {
     if (!included) {
       shuffledPeople.push(teamMembers[num]);
     }
+
   }
   response.render('about', {teamMembers: shuffledPeople});
 }
