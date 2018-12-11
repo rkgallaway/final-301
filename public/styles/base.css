@@ -1,5 +1,5 @@
 * {
-  /* outline: 1px solid rgb(143, 137, 233) !important; */
+  outline: 1px solid rgb(143, 137, 233) !important;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 425px) {} /* mobile phones up to 425 */
@@ -468,12 +468,6 @@ body section.company {
   padding: 5px 10px 5px 10px;
 }
 
-.botbut button {
-  padding: 5px 8vw 5px 8vw;
-  background-color: var(--header-bkg);
-  border-bottom-style: outset;
-}
-
 .botbut button, .botbut a {
   color: var(--main-text-color);
   font-size: 100%;
@@ -482,8 +476,13 @@ body section.company {
   transition-duration: 0.05s;
   text-decoration: none;
   cursor: pointer;
-  
   margin: 5px;
+}
+
+.botbut button {
+  padding: 5px 20px 5px 20px;
+  background-color: var(--header-bkg);
+  border-bottom-style: outset;
 }
 
 .dropDown button:hover {
@@ -620,6 +619,7 @@ body section.company {
     margin-left: 10px;
     margin-right: 10px;
     width: 80vw;
+    padding: 10px;
   }
 
   .footer div a {
@@ -629,8 +629,6 @@ body section.company {
   .userNotes {
     max-height: 300px;
     padding: 10px;
-    /* margin-bottom: 25px; */
   }
 
-  
 }
