@@ -21,7 +21,7 @@ Use this app to find basic information about companies. Number of employees, yea
 
 ## Architecture
 Tyler Hood and Fletcher LaRue:  ejs files, partials, and css 
-Ryan Gallaway and Jacob Anderson:  server.js, clearbit and fullcontact api work, 
+Ryan Gallaway and Jacob Anderson:  server.js, clearbit and fullcontact api work
 
 Search by company:
 Takes the user input (a company name) and sends it to the ClearBit API to get the website URL. The company's website URL is then sent thru the FullContact API to retrieve company data. Company data is presented to the user, and if the user wants to save this company for later it is saved in a SQL database.
